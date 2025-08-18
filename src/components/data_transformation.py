@@ -88,6 +88,19 @@ class DataTransformation:
             ]
             test_arr = np.c_[input_feature_test_arr,np.array(target_feature_test_df)]
 
+            # categorical_columns = self.get_data_transformer_object.categorical_columns
+            # numerical_columns = self.get_data_transformer_object.numerical_columns
+
+            # print("\n✅ Shape of train_arr:", train_arr.shape)
+
+            # print(train_arr[:5])
+
+            # cat_cols = preprocessing_obj.named_transformers_['cat_pipeline'] \
+            # .named_steps['one_hot_encoder'].get_feature_names_out(categorical_columns)
+
+            # all_feature_names = list(num_cols) + list(cat_cols) + [target_column_name]
+            # print(all_feature_names)
+
             logging.info(f"saved preprocessing object.")
 
             save_object(
@@ -100,11 +113,15 @@ class DataTransformation:
                 train_arr,
                 test_arr,
                 self.data_transformation_config.preprocessor_obj_file_path
-            )
-            
+            )            
 
 
 
         except Exception as e:
             raise CustomException(e,sys)
-        
+# if __name__ == "__main__":
+#     obj = DataTransformation()
+#     train_arr, test_arr, _ = obj.initiate_data_transformation(
+#         "artifacts/train.csv",
+#         "artifacts/test.csv"
+#     )
