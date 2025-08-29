@@ -80,10 +80,6 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-    - name: Debug image reference
-      run: |
-        echo "Computed image name: ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest"
-
 
     - name: Pull latest image from ECR
       run: |
